@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form Validation</title>
+</head>
+<body>
+<h1>Information Form</h1>
+<form name="myForm" onsubmit="return validateForm()">
+    <label for="txt_name">Your Name</label>
+    <input type="text" id="txt_name" name="txt_name" required>
+    <br><br>
+
+    <label for="txt_address">Address</label>
+    <textarea id="txt_address" name="txt_address" placeholder="Permanent Address" onfocus="this.placeholder=''" onkeypress="this.placeholder=''" required></textarea>
+    <br><br>
+
+    <label for="telephone">Contact</label>
+    <input type="tel" id="telephone" name="telephone" maxlength="10" required>
+    <br><br>
+
+    <label for="txt_email">Email</label>
+    <input type="email" id="txt_email" name="txt_email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" required>
+    <br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+<script>
+function validateForm() {
+    // Validate name, address, contact, and email fields
+    var name = document.forms["myForm"]["txt_name"].value;
+    var address = document.forms["myForm"]["txt_address"].value;
+    var contact = document.forms["myForm"]["telephone"].value;
+    var email = document.forms["myForm"]["txt_email"].value;
+
+    if (name == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+
+    if (address == "") {
+        alert("Address must be filled out");
+        return false;
+    }
+
+    if (contact == "") {
+        alert("Contact number must be filled out");
+        return false;
+    }
+
+    if (contact.length !== 10) {
+        alert("Contact number must be a 10-digit number");
+        return false;
+    }
+
+    if (email == "") {
+        alert("Email must be filled out");
+        return false;
+    }
+
+    return true;
+}
+</script>
+</body>
+</html>
